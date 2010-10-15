@@ -150,8 +150,8 @@ map <leader>r :w<CR>:! %:p<CR>
 " Run rspec 
 nmap <leader>tc <ESC>:call TestCommand()<CR>
 "nnoremap <leader>t :call Spec()<CR>
-nnoremap <leader>t :call RunAllTests('')<cr>:redraw<cr>:call JumpToError()<cr>
-nnoremap <leader>T :call RunAllTests('')<cr>
+"nnoremap <leader>t :call RunAllTests('')<cr>:redraw<cr>:call JumpToError()<cr>
+"nnoremap <leader>T :call RunAllTests('')<cr>
 "nnoremap <leader>l :call Rerun...
  
 
