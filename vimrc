@@ -7,8 +7,9 @@ set hidden							" you can change buffers without saving
 set nobackup
 set nowrap							" Don't wrap text
 set scrolloff=2						" Keep 2 lines top/bottom visible for scope
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=2
+set tabstop=2
+set expandtab
 set showcmd							" display incomplete commands
 set incsearch						" do incremental searching
 set smartcase						" case sensitive only if search contains uppercase
@@ -22,8 +23,8 @@ set splitbelow						" Open new horizontal split windows below current
 set splitright						" Open new vertical split windows to the right
 set laststatus=2					" Always show status line
 set ruler							" show the cursor position in the status line
-"set cursorline						" Highlight current line
-"set cursorcolumn					" Highlight current column
+set cursorline						" Highlight current line
+set cursorcolumn					" Highlight current column
 set number							" turn on line numbers
 set formatoptions=rq				" Automatically insert comment leader on return, and let gq format comments
 
@@ -39,8 +40,8 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/tmp
 "set directory=c:\temp
 "set viminfo=c:\temp\_viminfo
 
-colorscheme torte
-"colorscheme twilight
+"colorscheme torte
+colorscheme twilight
 "colorscheme twilight2
 "colorscheme koehler
 "colorscheme vividchalk
@@ -80,7 +81,7 @@ if has("autocmd")
   autocmd! bufwritepost .vimrc source %
 
   " kill trailing spaces when exiting file
-  autocmd BufWritePre * :%s/\s\+$//e
+  "autocmd BufWritePre * :%s/\s\+$//e
 
   autocmd! bufwritepost *.rb silent call UpdateTags()
 
