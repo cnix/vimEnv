@@ -30,6 +30,9 @@ set cursorcolumn					" Highlight current column
 set number							" turn on line numbers
 set formatoptions=rq				" Automatically insert comment leader on return, and let gq format comments
 
+" Autoreload files so we can pair with different editors
+set autoread
+
 "set listchars=tab:▸\ ,eol:¬
 "set listchars=tab:➟\ ,eol:⤦
 
