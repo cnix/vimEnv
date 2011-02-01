@@ -171,6 +171,7 @@ nmap <leader>tf :call TestFile()<CR>
 "nnoremap <leader>T :call RunAllTests('')<cr>
 
 map <leader>nt :NERDTreeToggle<CR>
+map <leader>nf :NERDTreeFind<CR>
 map <leader>tl :Tlist<CR>
 map <leader>fa :call VimGrep()<CR>
 map <leader>ft :FufTag<CR>
