@@ -52,6 +52,7 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/tmp
 "colorscheme torte
 colorscheme twilight
 "colorscheme twilight2
+"colorscheme twilight3
 "colorscheme koehler
 "colorscheme vividchalk
 "colorscheme elflord
@@ -113,7 +114,7 @@ if has("autocmd")
   autocmd FileType text setlocal textwidth=78
 
   " When editing a file, always jump to the last known cursor position.
-e " Don't do it when the position is invalid or when inside an event handler
+  " Don't do it when the position is invalid or when inside an event handler
   " (happens when dropping a file on gvim).
   autocmd BufReadPost *
     \ if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -162,6 +163,9 @@ map <leader>hs :nohlsearch<CR>
 "Write then Execute current file
 map <leader>x :w<CR>:! %:p<CR>
 
+"Copy path to clipboard
+nmap <leader>cp :call CopyPathToClipboard()<CR>
+
 " Run rspec
 nmap <leader>sc :call TestCommand()<CR>
 nmap <leader>tc :call TestContext()<CR>
@@ -206,10 +210,14 @@ imap <D-/> <C-O>,c<Space>
 
 command! W w !sudo tee % > /dev/null
 
-
 "use function! to overwrite when resourcing the vimrc
+function! CopyPathToClipboard()
+	let @* = expand('%')
+	echo "Copied to clipboard: ".@*
+endfunction
+
 function! TestCommand()
-	let @* = "spec ".expand('%:p').":".line(".")
+	let @* = "spec ".expand('%').":".line(".")
 	echo "Copied to clipboard: ".@*
 endfunction
 
