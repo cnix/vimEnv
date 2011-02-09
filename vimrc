@@ -29,9 +29,7 @@ set cursorline						" Highlight current line
 set cursorcolumn					" Highlight current column
 set number							" turn on line numbers
 set formatoptions=rq				" Automatically insert comment leader on return, and let gq format comments
-
-" Autoreload files so we can pair with different editors
-set autoread
+set autoread						" Don't prompt to reread the file if it is unchanged in the editor but modified externally.
 
 "set listchars=tab:▸\ ,eol:¬
 "set listchars=tab:➟\ ,eol:⤦
@@ -49,14 +47,12 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/tmp
 "set directory=c:\temp
 "set viminfo=c:\temp\_viminfo
 
+"colorscheme koehler
+"colorscheme slate2
 "colorscheme torte
 colorscheme twilight
 "colorscheme twilight2
-"colorscheme twilight3
-"colorscheme koehler
 "colorscheme vividchalk
-"colorscheme elflord
-
 
 if !exists("autocommands_loaded")
   let autocommands_loaded = 1
@@ -148,14 +144,8 @@ map <C-K> <C-W>k
 map <C-H> <C-W>h
 map <C-L> <C-W>l
 
-" Turn hlsearch off/on
-map <silent> <leader>hs :set invhlsearch<CR>
-
 " Toggle display of characters for whitespace
 map <silent> <leader>s :set nolist!<CR>
-
-"This unsets the "last search pattern" register, turns off hilighting, can continue search using n/N
-map <leader>hs :nohlsearch<CR>
 
 "Execute current file
 "map <leader>r :! %:p<CR>
