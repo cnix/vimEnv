@@ -31,8 +31,14 @@ set number							" turn on line numbers
 set formatoptions=rq				" Automatically insert comment leader on return, and let gq format comments
 set autoread						" Don't prompt to reread the file if it is unchanged in the editor but modified externally.
 
+" fuck scrollbars
+set guioptions-=l
+set guioptions-=r
+
+set cc=120
+" use cool invisible characters
 "set listchars=tab:▸\ ,eol:¬
-"set listchars=tab:➟\ ,eol:⤦
+set listchars=tab:➟\ ,eol:⤦
 
 
 "set cindent
@@ -42,17 +48,13 @@ set autoread						" Don't prompt to reread the file if it is unchanged in the ed
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/tmp
 
-" Windows Only
-"set backupdir=c:\temp
-"set directory=c:\temp
-"set viminfo=c:\temp\_viminfo
-
 "colorscheme koehler
 "colorscheme slate2
 "colorscheme torte
-colorscheme twilight
+"colorscheme twilight
 "colorscheme twilight2
 "colorscheme vividchalk
+colorscheme ir_black
 
 if !exists("autocommands_loaded")
   let autocommands_loaded = 1
@@ -186,6 +188,9 @@ map <silent> <D-9> :tabn 9<CR>
 nmap <D-]> >>
 vmap <D-]> >>
 imap <D-]> <C-O>>>
+
+" use jj for esc
+imap jj <Esc>
 
 " bind command-[ to shift left
 nmap <D-[> <<
