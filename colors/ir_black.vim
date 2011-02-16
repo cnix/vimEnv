@@ -56,6 +56,9 @@
 set background=dark
 hi clear
 
+" set the color of the wrap column
+hi ColorColumn guibg=#1d1e2c
+
 if exists("syntax_on")
   syntax reset
 endif
