@@ -31,20 +31,15 @@ set number                         " turn on line numbers
 set formatoptions=rq               " Automatically insert comment leader on return, and let gq format comments
 set autoread                       " Don't prompt to reread the file if it is unchanged in the editor but modified externally.
 
-" fuck scrollbars
-set guioptions-=L
-set guioptions-=r
-
-set cc=120
 " use cool invisible characters
 " set listchars=tab:▸\ ,eol:¬
-set listchars=tab:➟\ ,eol:⤦
+" set listchars=tab:➟\ ,eol:⤦
 
 " Store temporary files in a central spot
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/tmp
 
-colorscheme ir_black
+colorscheme slate2
 
 if !exists("autocommands_loaded")
   let autocommands_loaded = 1
@@ -61,14 +56,11 @@ endif
 
 
 if has("gui_running")
-  set go-=T							" keep MacVim toolbar hidden
-  "set guioptions-=rL				" Scrollbar always off
-  set fuoptions=maxvert,maxhorz		" fullscreen maximizes vertically AND horizontally
-
-  "set autochdir
-
-  "Auto write all files when focus is lost, including Cmd-Tab in MacVim
-  "autocmd FocusLost * :wall
+  colorscheme ir_black
+  set cc=120                    " show a wrap column
+  set go-=T                     " keep MacVim toolbar hidden
+  set guioptions-=rL            " fuck scrollbars
+  set fuoptions=maxvert,maxhorz " fullscreen maximizes vertically AND horizontally
 endif
 
 
@@ -135,6 +127,9 @@ map <C-J> <C-W>j
 map <C-K> <C-W>k
 map <C-H> <C-W>h
 map <C-L> <C-W>l
+
+" swap windows
+map <leader>ww <C-W>x
 
 " Toggle display of characters for whitespace
 map <silent> <leader>s :set nolist!<CR>
