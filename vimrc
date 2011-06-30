@@ -1,59 +1,49 @@
 call pathogen#runtime_append_all_bundles()
 
-set guifont=monaco:h16
+set guifont=monaco:h12
 
 set nocompatible
-set backspace=indent,eol,start		" allow backspacing over everything in insert mode
-set history=50						" keep 50 lines of command line history
-set hidden							" you can change buffers without saving
+set backspace=indent,eol,start     " allow backspacing over everything in insert mode
+set history=50                     " keep 50 lines of command line history
+set hidden                         " you can change buffers without saving
 set nobackup
-set nowrap							" Don't wrap text
-set scrolloff=2						" Keep 2 lines top/bottom visible for scope
+set nowrap                         " Don't wrap text
+set scrolloff=2                    " Keep 2 lines top/bottom visible for scope
 set shiftwidth=2
 set tabstop=2
 set expandtab
-set showcmd							" display incomplete commands
-set incsearch						" do incremental searching
-set smartcase						" case sensitive only if search contains uppercase
-set ignorecase						" Needs to be present for smartcase to work as intended
-set wildmenu 						" :e tab completion file browsing
-set wildmode=list:longest,full		" List all matches on first TAB, complete/cycle on second TAB
-set cf								" Enable error files & error jumping.
+set showcmd                        " display incomplete commands
+set incsearch                      " do incremental searching
+set smartcase                      " case sensitive only if search contains uppercase
+set ignorecase                     " Needs to be present for smartcase to work as intended
+set wildmenu                       " :e tab completion file browsing
+set wildmode=list:longest,full     " List all matches on first TAB, complete/cycle on second TAB
+set cf                             " Enable error files & error jumping.
 set listchars=tab:>-,trail:.,eol:$
-set vb 								" turns off visual bell
-set splitbelow						" Open new horizontal split windows below current
-set splitright						" Open new vertical split windows to the right
-set laststatus=2					" Always show status line
-set ruler							" show the cursor position in the status line
-set cursorline						" Highlight current line
-set cursorcolumn					" Highlight current column
-set number							" turn on line numbers
-set formatoptions=rq				" Automatically insert comment leader on return, and let gq format comments
-set autoread						" Don't prompt to reread the file if it is unchanged in the editor but modified externally.
+set vb                             " turns off visual bell
+set splitbelow                     " Open new horizontal split windows below current
+set splitright                     " Open new vertical split windows to the right
+set laststatus=2                   " Always show status line
+set ruler                          " show the cursor position in the status line
+set cursorline                     " Highlight current line
+set cursorcolumn                   " Highlight current column
+set number                         " turn on line numbers
+set formatoptions=rq               " Automatically insert comment leader on return, and let gq format comments
+set autoread                       " Don't prompt to reread the file if it is unchanged in the editor but modified externally.
 
 " fuck scrollbars
-set guioptions-=l
+set guioptions-=L
 set guioptions-=r
 
 set cc=120
 " use cool invisible characters
-"set listchars=tab:▸\ ,eol:¬
+" set listchars=tab:▸\ ,eol:¬
 set listchars=tab:➟\ ,eol:⤦
-
-
-"set cindent
-"set smartindent
 
 " Store temporary files in a central spot
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/tmp
 
-"colorscheme koehler
-"colorscheme slate2
-"colorscheme torte
-"colorscheme twilight
-"colorscheme twilight2
-"colorscheme vividchalk
 colorscheme ir_black
 
 if !exists("autocommands_loaded")
@@ -158,8 +148,9 @@ map <leader>x :w<CR>:! %:p<CR>
 "Copy path to clipboard
 nmap <leader>cp :call CopyPathToClipboard()<CR>
 
-" Run rspec
-nmap <leader>sc :call TestCommand()<CR>
+" Run tests
+nmap <leader>tt :call TestCommand()<CR>
+nmap <leader>sc :call SpecCommand()<CR>
 nmap <leader>tc :call TestContext()<CR>
 nmap <leader>tf :call TestFile()<CR>
 
@@ -197,11 +188,10 @@ nmap <D-[> <<
 vmap <D-[> <<
 imap <D-[> <C-O><<
 
-" bind command-/ to toggle comment (requires NERD Commenter)
-nmap <D-/> ,c<Space>
-vmap <D-/> ,c<Space>
-imap <D-/> <C-O>,c<Space>
-
+" bind command-/ to toggle comment (requires tComment)
+nmap <D-/> <C-_><C-_>     
+vmap <D-/> <C-_><C-_>     
+imap <D-/> <C-O><C-_><C-_>  
 
 command! W w !sudo tee % > /dev/null
 
@@ -211,8 +201,13 @@ function! CopyPathToClipboard()
 	echo "Copied to clipboard: ".@*
 endfunction
 
-function! TestCommand()
+function! SpecCommand()
 	let @* = "spec ".expand('%').":".line(".")
+	echo "Copied to clipboard: ".@*
+endfunction
+
+function! TestCommand()
+	let @* = "ruby -Ttest ".expand('%')
 	echo "Copied to clipboard: ".@*
 endfunction
 
