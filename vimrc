@@ -1,6 +1,6 @@
 call pathogen#runtime_append_all_bundles()
 
-set guifont=monaco:h12
+set guifont=monaco:h13
 
 set nocompatible
 set backspace=indent,eol,start     " allow backspacing over everything in insert mode
@@ -30,6 +30,15 @@ set cursorcolumn                   " Highlight current column
 set number                         " turn on line numbers
 set formatoptions=rq               " Automatically insert comment leader on return, and let gq format comments
 set autoread                       " Don't prompt to reread the file if it is unchanged in the editor but modified externally.
+
+" fuck scrollbars
+set guioptions-=L
+set guioptions-=r
+
+set cc=120
+" use cool invisible characters
+"set listchars=tab:▸\ ,eol:¬
+set listchars=tab:➟\ ,eol:⤦
 
 " use cool invisible characters
 " set listchars=tab:▸\ ,eol:¬
@@ -196,8 +205,8 @@ function! CopyPathToClipboard()
 	echo "Copied to clipboard: ".@*
 endfunction
 
-function! SpecCommand()
-	let @* = "spec ".expand('%').":".line(".")
+function! TestCommand()
+	let @* = "rspec ".expand('%').":".line(".")
 	echo "Copied to clipboard: ".@*
 endfunction
 
