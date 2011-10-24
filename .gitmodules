@@ -1,6 +1,6 @@
-[submodule "bundle/nerdcommenter"]
-	path = bundle/nerdcommenter
-	url = http://github.com/scrooloose/nerdcommenter.git
+[submodule "bundle/tcomment"]
+	path = bundle/tComment
+	url = https://github.com/vim-scripts/tComment.git
 [submodule "bundle/rails"]
 	path = bundle/rails
 	url = http://github.com/tpope/vim-rails.git
@@ -49,3 +49,6 @@
 [submodule "bundle/textobj-rubyblock"]
 	path = bundle/textobj-rubyblock
 	url = https://github.com/nelstrom/vim-textobj-rubyblock.git
+[submodule "bundle/tabular"]
+  path = bundle/tabular
+  url = https://github.com/godlygeek/tabular.git
