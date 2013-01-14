@@ -66,7 +66,7 @@ endif
 
 if has("gui_running")
   colorscheme ir_black
-  set cc=120                    " show a wrap column
+  set cc=80                     " show a wrap column
   set go-=T                     " keep MacVim toolbar hidden
   set guioptions-=rL            " fuck scrollbars
   set fuoptions=maxvert,maxhorz " fullscreen maximizes vertically AND horizontally
